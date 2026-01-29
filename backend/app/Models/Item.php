@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    protected $fillable = [
+        'title',
+        'description',
+        'type',
+        'location',
+        'date',
+        'status',
+        'user_id',
+    ];
 }
