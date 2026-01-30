@@ -5,4 +5,6 @@ Application de déclaration d’objets perdus
 
 ### 📊 Diagrammes de cas d'utilisation
 [![Lucidchart](https://img.shields.io/badge/📊_Diagramme_use_case-View-blue?style=for-the-badge&logo=lucidchart)]( https://lucid.app/lucidchart/8a6eb6a7-b8c6-4942-8192-b401ae8fd8a9/edit?beaconFlowId=1884018553E30CC0&invitationId=inv_955805f8-4f19-4eae-b11a-e7c65f51053c&page=0_0#)
+### 📽️ Présentation du projet
+[![Canva Presentation](https://img.shields.io/badge/🎨_Présentation-View-red?style=for-the-badge&logo=canva)]([LIEN_DE_LA_PRESENTATION_ICI](https://www.canva.com/design/DAG_7IMjAuc/8iU76HlNB_o68MqlrGt2kg/edit?ui=eyJBIjp7fX0))
 
