@@ -5,7 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateItemRequest extends FormRequest
+
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,6 +14,7 @@ class UpdateItemRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    
     }
 
     /**
@@ -23,12 +25,10 @@ class UpdateItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'title' => 'sometimes|string|max:255',
-             'description' => 'sometimes|string',
-             'type' => 'sometimes|in:perdu,trouve',
-             'location' => 'sometimes|string|max:255',
-             'date' => 'sometimes|date',
-             'status' => 'sometimes|string',
+             'name' => 'required|string|max:255',
+             'email' => 'required|email|unique:users,email',
+             'password' => 'required|string|min:6',
+             'role' => 'sometimes|in:user,admin',
         ];
     }
 }
