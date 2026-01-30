@@ -17,6 +17,15 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // Get the profile of the authenticated user
+    public function profile(Request $request)
+{
+    return response()->json([
+        'user' => $request->user()
+    ]);
+}
+// Get all users (admin only)
+
     public function index(Request $request)
     {
         if ($request->user()->role !== 'admin') {
