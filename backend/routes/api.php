@@ -5,6 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AuthController;
+use App\Models\Item;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 /*
@@ -17,33 +24,36 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-// Routes for UserController
+// Routes pour UserController
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+
+    
     Route::post('/logout', [AuthController::class, 'logout']);
-});
-// Routes protected by sanctum middleware
- 
-// Profile user connecté
+
+
+// Utilisateur du profil connecté
     Route::get('/user', function (Request $request) {
         return response()->json($request->user());
     });
-// Routes for ItemController
+// Routes pour UserController
     Route::get('/users', [UserController::class, 'index']);       
     Route::post('/users', [UserController::class, 'store']);      
     Route::put('/users/{id}', [UserController::class, 'update']); 
     Route::delete('/users/{id}', [UserController::class, 'destroy']); 
     
-    // Routes for ItemController
+    // Routes pour ItemController
     Route::get('/items', [ItemController::class, 'index']);       
-    Route::post('/items', [ItemController::class, 'store']);      
-    Route::get('/items/{id}', [ItemController::class, 'show']);   
+    Route::post('/items', [ItemController::class, 'store']);        
     Route::put('/items/{id}', [ItemController::class, 'update']); 
     Route::delete('/items/{id}', [ItemController::class, 'destroy']); 
 
-    // Route to get items of the authenticated user
+    // Itinéraire pour obtenir les éléments de l'utilisateur authentifié
      Route::get('/my-items', [ItemController::class, 'myItems']);
+     });
+
+     //Route:get('/dashbord',[ItemController::class, 'dashbord']);
+      
 

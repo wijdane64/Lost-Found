@@ -29,7 +29,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->user()->role !== 'admin') {
-            return response()->json(['message' => 'غير مسموح'], 403);
+            return response()->json(['message' => 'Non autorisé'], 403);
         }
 
         $users = User::with('items')->get();
@@ -44,12 +44,11 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
-        $data['role'] = $data['role'] ?? 'user'; // Default role is 'user'
-
+        $data['role'] = $data['role'] ?? 'user'; 
         $user = User::create($data);
 
         return response()->json([
-            'message' => 'تم إنشاء المستخدم بنجاح',
+            'message' => 'Utilisateur créé avec succès',
             'user' => $user
         ], 201);
     }
@@ -72,7 +71,7 @@ class UserController extends Controller
 
         // Only admin or the user themselves can update
         if ($request->user()->role !== 'admin' && $request->user()->id !== $user->id) {
-            return response()->json(['message' => 'غير مسموح'], 403);
+            return response()->json(['message' => 'Non autorisé'], 403);
         }
 
         $data = $request->validated();
@@ -84,7 +83,7 @@ class UserController extends Controller
         $user->update($data);
 
         return response()->json([
-            'message' => 'تم التحديث بنجاح',
+            'message' => 'Utilisateur mis à jour avec succès',
             'user' => $user
         ]);
     }
@@ -98,12 +97,12 @@ class UserController extends Controller
 
         // Only admin can delete users
         if ($request->user()->role !== 'admin') {
-            return response()->json(['message' => 'غير مسموح'], 403);
+            return response()->json(['message' => 'Non autorisé'], 403);
         }
 
         $user->delete();
 
-        return response()->json(['message' => 'تم حذف المستخدم بنجاح']);
+        return response()->json(['message' => 'Utilisateur supprimé avec succès']);
     }
 }
 

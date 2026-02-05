@@ -49,7 +49,7 @@ class ItemController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'تم إنشاء الغرض بنجاح',
+            'message' => 'ajouté avec succès cet article',
             'item' => $item
         ], 201);
     }
@@ -75,17 +75,18 @@ class ItemController extends Controller
             $item->user_id !== $request->user()->id
         ) {
             return response()->json([
-                'message' => 'غير مسموح لك بتعديل هذا الغرض'
+                'message' => 'Non autorisé de modifier cet article'
             ], 403);
         }
 
         $item->update($request->validated());
 
         return response()->json([
-            'message' => 'تم التعديل بنجاح',
+            'message' => 'Modification effectuée avec succès',
             'item' => $item
         ]);
     }
+    
 
 
 
@@ -102,14 +103,14 @@ class ItemController extends Controller
             $item->user_id !== $request->user()->id
         ) {
             return response()->json([
-                'message' => 'غير مسموح لك بحذف هذا الغرض'
+                'message' => 'Non autorisé de supprimer cet article'
             ], 403);
         }
 
         $item->delete();
 
         return response()->json([
-            'message' => 'تم حذف الغرض بنجاح'
+            'message' => 'Article supprimé avec succès'
         ]);
     }
     // Get items of the authenticated user

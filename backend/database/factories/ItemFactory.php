@@ -17,13 +17,13 @@ class ItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
-            'description' => $this->faker->paragraph,
-            'type' => $this->faker->randomElement(['perdu', 'trouvé']),
-            'location' => $this->faker->address,
-            'date' => $this->faker->date(),
-            'status' => $this->faker->randomElement(['open', 'closed']),
-            'user_id' => \App\Models\User::factory(),
+            'title' => fake()->sentence(3),
+            'description' => fake()->paragraph,
+            'type' => fake()->randomElement(['perdu', 'trouve']),
+            'location' => fake()->address,
+            'date' => fake()->date(),
+            'status' => fake()->randomElement(['en attente', 'retourné', 'non retourné']),
+            'user_id' => fake()->numberBetween(1, 10),
         ];
     }
 }
